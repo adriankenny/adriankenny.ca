@@ -23,6 +23,16 @@ python3 -m http.server 8000
 2. **Settings → Pages** → Source: **Deploy from a branch** → Branch: **main**, Folder: **/ (root)**.
 3. Site: `https://adriankenny.github.io/adriankenny.ca/`.
 
+## Contact form (“Looking to chat with me?”)
+
+The contact form uses [Formspree](https://formspree.io) so submissions are sent to your email. To enable it:
+
+1. Go to [formspree.io](https://formspree.io) and create a free account.
+2. Create a new form and copy your form ID (e.g. `xjvqqlop` from `https://formspree.io/f/xjvqqlop`).
+3. In **index.html**, search for `YOUR_FORM_ID` and replace it with your form ID (e.g. `action="https://formspree.io/f/xjvqqlop"`).
+
+After that, form submissions will go to your Formspree inbox and you can forward them to your email.
+
 ## Re-pull the live site
 
 To refresh the mirror from adriankenny.ca:
