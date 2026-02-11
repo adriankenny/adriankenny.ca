@@ -202,13 +202,21 @@
       text-align: center;
     }
 
-    .companies-subtitle {
+    /* ===== Secondary Heading Pattern ===== */
+    .section-heading {
       font-size: 28px;
       font-weight: 400;
       letter-spacing: -0.5px;
       line-height: 1.4;
       color: var(--text);
       text-align: center;
+    }
+
+    .section-heading strong {
+      font-weight: 600;
+    }
+
+    .companies-subtitle {
       max-width: 640px;
     }
 
@@ -263,9 +271,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--text);
     }
 
     .dribbble-cta a {
@@ -286,7 +291,7 @@
     }
 
     .dribbble-cta svg {
-      height: 25.92px;
+      height: 1em;
       width: auto;
     }
 
@@ -588,7 +593,7 @@
         padding-bottom: 80px;
       }
 
-      .companies-subtitle {
+      .section-heading {
         font-size: 18px;
       }
 
@@ -624,7 +629,7 @@
       }
 
       .dribbble-cta svg {
-        height: 20px;
+        height: 1em;
       }
 
       .work-grid {
@@ -696,7 +701,7 @@
 
     <!-- ===== Companies ===== -->
     <section class="companies">
-      <p class="companies-subtitle">Over the past decade i've had the privilege to work with <span style="font-weight:600">these amazing companies.</span></p>
+      <p class="section-heading companies-subtitle">Over the past decade i've had the privilege to work with <strong>these amazing companies.</strong></p>
 
       <div class="logos-grid">
         <a class="logo-card" href="https://popl.co/" target="_blank" rel="noopener"><img src="logos-figma/popl.svg" alt="Popl"></a>
@@ -711,7 +716,7 @@
     <!-- ===== Dribbble CTA ===== -->
     <section class="dribbble-section">
       <div class="dribbble-group">
-      <div class="dribbble-cta">
+      <div class="section-heading dribbble-cta">
         <a href="https://dribbble.com/adriankenny" target="_blank" rel="noopener">
           <span>See some of my latest work on</span>
           <svg width="67" height="16" viewBox="0 0 67 16" fill="none">
