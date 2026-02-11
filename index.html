@@ -368,6 +368,7 @@
     .contact-form input[type="email"],
     .contact-form textarea {
       -webkit-appearance: none;
+      appearance: none;
       display: inline-block;
       width: 100%;
       line-height: 1.4em;
@@ -403,6 +404,7 @@
 
     .contact-form input[type="submit"] {
       -webkit-appearance: none;
+      appearance: none;
       display: inline-block;
       width: 100%;
       line-height: 1.4em;
@@ -569,8 +571,13 @@
         font-size: 30px;
       }
 
+      .hero-heading br {
+        display: none;
+      }
+
       .hero-content {
-        padding: 0 8px;
+        padding: 0 16px;
+        max-width: 100%;
       }
 
       .companies {
@@ -660,7 +667,7 @@
       <div class="hero-content">
         <h1 class="hero-heading">
           I'm <span class="name">Adrian Kenny,</span><br>
-          a <span class="role">Product Designer</span> with a passion for creating<br>
+          a <span class="role">Product Designer</span> passionate about creating<br>
           <span class="highlight">Beautiful Interfaces</span>
         </h1>
       </div>
