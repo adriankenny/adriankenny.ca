@@ -1,45 +1,35 @@
 # adriankenny.ca
 
-Static portfolio site. Built with plain HTML and CSS for easy hosting and version control.
+Mirror of [adriankenny.ca](https://adriankenny.ca) (Framer-built). Pulled with a Site Sucker–style script: one HTML page plus all Framer assets (fonts, scripts, images) saved locally and linked with relative paths.
 
 ## Contents
 
-- **index.html** — Main page (hero, work, contact)
-- **styles.css** — Layout and typography (DM Sans, Instrument Serif)
-
-Portfolio images are loaded from Framer’s CDN; links point to Dribbble, Figma, Instagram, Threads, Mastodon, and LinkedIn.
+- **index.html** — Full Framer page with rewritten asset URLs
+- **assets/** — Fonts (.woff2), scripts (.mjs), images (.png), etc.
+- **suck_site.py** — Script to re-pull the live site (run `python3 suck_site.py`)
 
 ## Run locally
 
-Open `index.html` in a browser, or use a simple server:
+Use a local server (required for module scripts):
 
 ```bash
-# Python 3
 python3 -m http.server 8000
-
-# Then open http://localhost:8000
+# Open http://localhost:8000
 ```
 
 ## Deploy on GitHub Pages
 
-1. Push this folder to a GitHub repo named `adriankenny.ca` (see below).
-2. In the repo: **Settings → Pages**.
-3. Under **Source**, choose **Deploy from a branch**.
-4. Branch: **main**, folder: **/ (root)**.
-5. Save. The site will be at `https://adriankenny.github.io/adriankenny.ca/`.
+1. Push this repo to GitHub.
+2. **Settings → Pages** → Source: **Deploy from a branch** → Branch: **main**, Folder: **/ (root)**.
+3. Site: `https://adriankenny.github.io/adriankenny.ca/`.
 
-## Put this site on GitHub
+## Re-pull the live site
 
-From your machine, in the folder that contains `index.html` and `styles.css`:
+To refresh the mirror from adriankenny.ca:
 
 ```bash
-cd /path/to/adriankenny.ca
-git init
-git add .
-git commit -m "Initial commit: portfolio site"
-git branch -M main
-git remote add origin https://github.com/adriankenny/adriankenny.ca.git
-git push -u origin main
+python3 suck_site.py
+git add index.html assets/
+git commit -m "Re-pull adriankenny.ca"
+git push
 ```
-
-Create the repo on [github.com/new](https://github.com/new) with the name **adriankenny.ca** (no README or .gitignore), then run the commands above.
