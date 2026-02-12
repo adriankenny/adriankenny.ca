@@ -46,6 +46,7 @@
   <style>
     /* ===== Theme Variables ===== */
     :root, [data-theme="dark"] {
+      --footer-height: 100px;
       --bg: #1b1d22;
       --text: #d4d4d4;
       --text-strong: #fff;
@@ -60,7 +61,7 @@
       --btn-hover: rgb(72, 76, 87);
       --btn-text: rgb(255, 255, 255);
       --footer-text: #3a3e49;
-      --social-fill: #5a5f6b;
+      --social-fill: #8f95a3;
       --card-shadow: rgba(0, 0, 0, 0.08);
       --card-shadow-hover: rgba(0, 0, 0, 0.16);
       --logo-fill: white;
@@ -84,7 +85,7 @@
       --btn-hover: #2d3038;
       --btn-text: #ffffff;
       --footer-text: #9ca0a8;
-      --social-fill: #9ca0a8;
+      --social-fill: #5f6573;
       --card-shadow: rgba(0, 0, 0, 0.06);
       --card-shadow-hover: rgba(0, 0, 0, 0.12);
       --logo-fill: #1b1d22;
@@ -95,8 +96,22 @@
 
     /* ===== Reset ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; font-weight: 400; color: var(--text); background-color: var(--bg); overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+    html {
+      height: 100%;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+    body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background-color: var(--bg);
+      overflow: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; height: auto; }
 
@@ -105,8 +120,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
       width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
     section {
@@ -116,17 +135,23 @@
       justify-content: center;
       text-align: center;
       width: 100%;
+      min-height: 100vh;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 24px var(--footer-height);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    section > * {
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* ===== Hero / About ===== */
     .hero {
       height: 100vh;
-      gap: 128px;
-      padding-top: 64px;
-      padding-bottom: 152px;
+      gap: 64px;
     }
 
     .hero-content {
@@ -189,8 +214,7 @@
     /* ===== Companies ===== */
     .companies {
       height: 100vh;
-      gap: 64px;
-      padding-bottom: 152px;
+      gap: 36px;
     }
 
     .companies-title {
@@ -256,8 +280,6 @@
     .dribbble-section {
       min-height: 100vh;
       gap: 0;
-      padding-top: 64px;
-      padding-bottom: 64px;
     }
 
     .dribbble-group {
@@ -331,7 +353,6 @@
       background-color: var(--bg);
       height: 100vh;
       gap: 64px;
-      padding: 100px 24px 152px;
       position: relative;
       overflow: hidden;
     }
@@ -432,16 +453,18 @@
 
     /* ===== Footer ===== */
     .footer {
-      position: sticky;
+      position: fixed;
+      left: 0;
+      right: 0;
       bottom: 0;
-      z-index: 1;
+      z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
       text-align: center;
       gap: 32px;
-      height: 100px;
+      height: var(--footer-height);
       width: 100%;
       padding: 0 24px 48px;
       background: linear-gradient(to bottom, transparent 0%, var(--bg) 30%);
@@ -548,7 +571,7 @@
     @media (max-width: 1199px) {
       .hero-heading { font-size: 40px; }
       .contact-heading { font-size: 40px; }
-      .hero { gap: 80px; }
+      .hero { gap: 40px; }
       .work-card { width: 260px; }
     }
 
@@ -567,9 +590,7 @@
       }
 
       .hero {
-        gap: 48px;
-        padding-top: 48px;
-        padding-bottom: 80px;
+        gap: 24px;
       }
 
       .hero-heading {
@@ -588,9 +609,7 @@
       .companies {
         height: auto;
         min-height: 100vh;
-        gap: 40px;
-        padding-top: 80px;
-        padding-bottom: 80px;
+        gap: 24px;
       }
 
       .section-heading {
@@ -614,8 +633,6 @@
         height: auto;
         min-height: 100vh;
         gap: 20px;
-        padding-top: 80px;
-        padding-bottom: 80px;
       }
 
       .dribbble-cta {
@@ -646,7 +663,6 @@
       .contact {
         height: auto;
         min-height: 100vh;
-        padding: 80px 24px;
       }
 
       .contact-heading {
@@ -658,9 +674,8 @@
       }
 
       .footer {
-        padding: 0 24px;
-        height: auto;
-        padding-top: 24px;
+        height: var(--footer-height);
+        gap: 24px;
         padding-bottom: 24px;
       }
     }
