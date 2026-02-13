@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-Static site mirror helper: fetch a target URL and selected asset domains,
+Static site mirror helper: fetch a target URL, mirror static assets,
 save locally, and rewrite HTML to use local asset paths.
 """
 import re
-import os
 import hashlib
 import urllib.request
 import urllib.parse
@@ -16,10 +15,29 @@ OUT_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = OUT_DIR / "assets"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 
-# Asset domains to mirror (keep external links untouched)
-MIRROR_DOMAINS = ("framerusercontent.com", "adriankenny.ca")
-# Skip noisy endpoints (analytics/events)
-SKIP_PATTERNS = ("events.framer.com",)
+SKIP_HOST_SUFFIXES = (
+    "google-analytics.com",
+    "googletagmanager.com",
+    "doubleclick.net",
+)
+STATIC_EXTENSIONS = {
+    ".avif",
+    ".bin",
+    ".css",
+    ".gif",
+    ".ico",
+    ".jpeg",
+    ".jpg",
+    ".js",
+    ".json",
+    ".mjs",
+    ".png",
+    ".svg",
+    ".ttf",
+    ".webp",
+    ".woff",
+    ".woff2",
+}
 
 def extract_urls(html: str) -> set:
     urls = set()
@@ -33,11 +51,13 @@ def extract_urls(html: str) -> set:
     return urls
 
 def should_mirror(url: str) -> bool:
-    if any(s in url for s in SKIP_PATTERNS):
-        return False
     try:
-        host = urllib.parse.urlparse(url).netloc
-        return any(host.endswith(d) or host == d for d in MIRROR_DOMAINS)
+        parsed = urllib.parse.urlparse(url)
+        host = parsed.netloc.lower()
+        if any(host.endswith(s) for s in SKIP_HOST_SUFFIXES):
+            return False
+        ext = Path(parsed.path).suffix.lower()
+        return ext in STATIC_EXTENSIONS
     except Exception:
         return False
 

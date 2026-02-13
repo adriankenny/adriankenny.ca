@@ -6,7 +6,7 @@ Static mirror of [adriankenny.ca](https://adriankenny.ca). This repo stores one 
 
 - **index.html** — Mirrored page with rewritten asset URLs
 - **assets/** — Fonts (.woff2), scripts (.mjs), images (.png), etc.
-- **suck_site.py** — Script to refresh the live snapshot (run `python3 suck_site.py`)
+- **mirror_site.py** — Script to refresh the live snapshot (run `python3 mirror_site.py`)
 
 ## Run locally
 
@@ -38,7 +38,7 @@ After that, form submissions will go to your Formspree inbox and you can forward
 To refresh the mirror from adriankenny.ca:
 
 ```bash
-python3 suck_site.py
+python3 mirror_site.py
 git add index.html assets/
 git commit -m "Re-pull adriankenny.ca"
 git push
