@@ -6,7 +6,6 @@ Static mirror of [adriankenny.ca](https://adriankenny.ca). This repo stores one 
 
 - **index.html** — Mirrored page with rewritten asset URLs
 - **assets/** — Fonts (.woff2), scripts (.mjs), images (.png), etc.
-- **mirror_site.py** — Script to refresh the live snapshot (run `python3 mirror_site.py`)
 
 ## Run locally
 
@@ -32,14 +31,3 @@ The contact form uses [Formspree](https://formspree.io) so submissions are sent 
 3. In **index.html**, search for `YOUR_FORM_ID` and replace it with your form ID (e.g. `action="https://formspree.io/f/xjvqqlop"`).
 
 After that, form submissions will go to your Formspree inbox and you can forward them to your email.
-
-## Re-pull the live site
-
-To refresh the mirror from adriankenny.ca:
-
-```bash
-python3 mirror_site.py
-git add index.html assets/
-git commit -m "Re-pull adriankenny.ca"
-git push
-```
