@@ -1,12 +1,12 @@
 # adriankenny.ca
 
-Mirror of [adriankenny.ca](https://adriankenny.ca) (Framer-built). Pulled with a Site Sucker–style script: one HTML page plus all Framer assets (fonts, scripts, images) saved locally and linked with relative paths.
+Static mirror of [adriankenny.ca](https://adriankenny.ca). This repo stores one HTML page and all required assets with relative paths so it can run locally or as a static deploy.
 
 ## Contents
 
-- **index.html** — Full Framer page with rewritten asset URLs
+- **index.html** — Mirrored page with rewritten asset URLs
 - **assets/** — Fonts (.woff2), scripts (.mjs), images (.png), etc.
-- **suck_site.py** — Script to re-pull the live site (run `python3 suck_site.py`)
+- **suck_site.py** — Script to refresh the live snapshot (run `python3 suck_site.py`)
 
 ## Run locally
 

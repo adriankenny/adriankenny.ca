@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Site Sucker-style mirror: fetch a URL and all same-origin / Framer assets,
-save locally, rewrite HTML to use local paths.
+Static site mirror helper: fetch a target URL and selected asset domains,
+save locally, and rewrite HTML to use local asset paths.
 """
 import re
 import os
@@ -16,9 +16,9 @@ OUT_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = OUT_DIR / "assets"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 
-# Only mirror these domains (don't rewrite external links)
+# Asset domains to mirror (keep external links untouched)
 MIRROR_DOMAINS = ("framerusercontent.com", "adriankenny.ca")
-# Skip rewriting these (analytics, etc.)
+# Skip noisy endpoints (analytics/events)
 SKIP_PATTERNS = ("events.framer.com",)
 
 def extract_urls(html: str) -> set:
